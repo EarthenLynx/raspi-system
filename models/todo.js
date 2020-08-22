@@ -1,15 +1,10 @@
-const mongoose = require("mongoose"); 
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
 
-const Schema = mongoose.Schema; 
+const adapter = new FileSync('../store/db.json')
+const db = low(adapter)
 
-const TodoSchema = new Schema({
-    todo_id: {type: String, required: true},
-    todo_head: {type: String, required: true}, 
-    todo_desc: {type: String, required: true, max: 400}, 
-    todo_tags: {type: Array, required: true},
-    todo_done: {type: Boolean, required: true},
-    todo_visible: {type: Boolean, required: true}, 
-}); 
+// In here, create all functionalities related to the DB CRUD operations
 
-// Export the model 
-module.exports = mongoose.model("Todo", TodoSchema); 
+
+module.exports = {}

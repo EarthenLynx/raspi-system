@@ -1,0 +1,13 @@
+.content {
+  margin: 2rem 0 2rem;
+}
+
+.card {
+  display: block; 
+  margin: 2rem auto; 
+  width: 40vw;
+}
+
+.input-field  {
+  margin-top: 1rem;
+}
