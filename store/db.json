@@ -1,13 +1,10 @@
 {
   "todos": [
     {
-      "value": "And another one down "
+      "value": "Todo"
     },
     {
-      "value": "And yet another one down "
-    },
-    {
-      "value": "Another one bites the dust"
+      "value": "This is my new todo"
     }
   ]
 }

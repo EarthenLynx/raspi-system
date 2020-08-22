@@ -17,7 +17,7 @@ const writeTodo = (data) => {
       return;
     }
     if (data.value.length < 2) {
-      reject("Your todo must be longer than that");
+      reject("Your todo must be longer than two characters");
       return;
     }
 

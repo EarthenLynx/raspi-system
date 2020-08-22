@@ -6,7 +6,6 @@ const tList = document.getElementById("todoList");
 // Define the http - functions:
 // GET
 const getData = () => {
-
   // Send a GET request with the stringified payload
   fetch("http://localhost:3000/todo")
     .then((response) => response.json())
@@ -25,6 +24,7 @@ const getData = () => {
 
         tList.appendChild(el);
       });
+      M.toast({ html: `<i class='far fa-bell' style='color: green'></i> ${payload.msg}` });
     });
 };
 
@@ -42,17 +42,16 @@ const postData = () => {
       "Content-Type": "application/json",
     },
   })
+    .then((res) => res.json())
     // Upon successful response, notify the user
-    .then(() =>
-      M.toast({ html: "<i class='far fa-bell'></i> Todo successfully added" })
-    )
+    .then((res) => M.toast({ html: `<i class='far fa-bell' style='color: green'></i> ${res.msg}` }))
 
     // And then update the data model
     .then(() => getData())
 
     // If there's an error, also give the user a message
-    .catch(() =>
-      M.toast({ html: "<i class='far fa-bell'></i> Todo could not be added" })
+    .catch((err) =>
+      M.toast({ html: `<i class='far fa-bell' style='color: red'></i> ${err.msg}` })
     );
 };
 // DELETE
@@ -70,18 +69,16 @@ const deleteData = (event) => {
       "Content-Type": "application/json",
     },
   })
-
-  // Upon successful response, notify the user
-    .then(() =>
-      M.toast({ html: "<i class='far fa-bell'></i> Todo successfully deleted" })
-    )
+    .then((res) => res.json())
+    // Upon successful response, notify the user
+    .then((res) => M.toast({ html: `<i class='far fa-bell style='color: green''></i> ${res.msg}` }))
 
     // And then update the data model
     .then(() => getData())
     .catch(() =>
       M.toast({
         html:
-          "<i class='far fa-bell'></i> An error occured while trying to add a todo",
+          "<i class='far fa-bell' style='color: red'></i> An error occured while trying to add a todo",
       })
     );
 };
