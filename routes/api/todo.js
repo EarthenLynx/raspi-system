@@ -1,14 +1,15 @@
 // Import needed modules
 const express = require("express");
+const create_todo = require("../../controller/todo.controller");
 
 // Setup the router
 var router = express.Router();
 
 router.get("/", (req, res, next) => {
-  console.log("received GET request at TODO Route")
+  console.log("Received GET requests at TODO Route")
 })
 router.post("/", (req, res, next) => {
-  console.log("received POST request at TODO Route")
+  create_todo(req, res, next);
 })
 router.delete("/", (req, res, next) => {
   console.log("received DELETE request at TODO Route")

@@ -1,6 +1,7 @@
 // Initialize the base modules
 const express = require("express");
 const path = require("path");
+const bodyParser = require('body-parser')
 
 // Initialize the routes and the application
 const routerTodo = require("./routes/api/todo");
@@ -8,7 +9,9 @@ const app = express();
 
 // Initialize the middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Configure View Engine
