@@ -9,9 +9,7 @@ const app = express();
 
 // Initialize the middleware
 app.use(express.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Configure View Engine

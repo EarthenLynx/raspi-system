@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-content">
       <div class="input-field">
-        <input id="todoInout" type="text" class="validate">
+        <input id="todoInput" type="text" class="validate">
         <label for="todo">Add a Todo</label>
       </div>
     </div>
@@ -13,11 +13,14 @@
 
   <div class="card">
     <div class="card-content">
-      <div class="card-title">Active Todos</div>
-      <ul class="collection">
-        <li class="collection-item">Alvin</li>
-      </ul>
-    </div>
+      <div class="card-title">
+        Active Todos
+        <a id="readButton" class="waves-effect waves-light btn float-right">
+         <i class="fas fa-sync"></i> Refresh
+        </a>
+      </div>
 
+      <ul id="todoList" class="collection"></ul>
+    </div>
   </div>
 </div>
