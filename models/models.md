@@ -1,11 +1,9 @@
 # The model part
 
-
 ## In a nutshell
 > - Models describe data
 > - They offer methods to CRUD databases
-> - They usually contain validators
-
+> - They usually contain validators to check for data integrity
 
 ## Description
 Models are used to describe data. In Node applications, models usually provide functionality to describe and manipulate data structures. Creating models is carried out by backend (server) developers.
