@@ -4,7 +4,7 @@ const create_todo = (req, res, next) => {
   const todo = req.body;
   writeTodo(todo)
     .then((msg) => res.status(200).send({status: 200, msg}))
-    .catch((err) => res.status(500).send({status: 500, err}));
+    .catch((err) => res.status(500).send({status: 500, msg: err}));
 };
 
 const get_todos = (req, res, next) => {

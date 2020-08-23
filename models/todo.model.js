@@ -1,23 +1,34 @@
-const low = require("lowdb");
-const FileSync = require("lowdb/adapters/FileSync");
 const path = require("path");
 
+// Initialize the DB adapter
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
 const adapter = new FileSync(path.join(__dirname, "../store/db.json"));
 const db = low(adapter);
 
 // In here, create all functionalities related to the DB CRUD operations
+// It is very common to use a class to wrap the DB methods. Such construction
+// is also useful to build in separate validations.
 const writeTodo = (data) => {
-  console.log(data);
   return new Promise((resolve, reject) => {
     db.defaults({ todos: [{}] }).write();
 
     // Validate the incoming data based on type and legnth
     if (typeof data !== "object") {
-      reject("Incoming data was not a valid object");
+      console.log("Incoming data was not an object");
+      reject("Incoming data was not an object");
       return;
     }
-    if (data.value.length < 2) {
-      reject("Your todo must be longer than two characters");
+
+    // Check if incoming object has the property that's used
+    if (!data.hasOwnProperty('value')) {
+      reject("Incoming object is improperly formatted")
+      return;
+    }
+
+    // Check if the length of the todo is at least 5 characters
+    if (data.value.length <= 5) {
+      reject("Your todo must be longer than four characters");
       return;
     }
 
@@ -30,7 +41,6 @@ const writeTodo = (data) => {
 const readTodos = () => {
   return new Promise((resolve) => {
     const payload = db.get("todos").value();
-    console.log(payload);
     resolve(payload);
   });
 };
