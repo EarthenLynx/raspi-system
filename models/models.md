@@ -41,6 +41,52 @@ Even though their specifications differ by their nature, the goal these three sp
 - Graphql offers maximum flexibility, allowing access to several resources in a single call.
 - It does, however, require a huge architectural boilerplate
 
+### Example
+
+```javascript
+// Initialize the DB module(s).
+const low = require("lowdb");
+const FileSync = require("lowdb/adapters/FileSync");
+const adapter = new FileSync(path.join(__dirname, "../store/db.json"));
+const db = low(adapter);
+
+// Create the model's function to create a new object
+const writeTodo = (data) => {
+  return new Promise((resolve, reject) => {
+
+    // LOWDB - related: Initialize the database structure
+    db.defaults({ todos: [{}] }).write();
+
+    // Validate the incoming data based on type and legnth
+    if (typeof data !== "object") {
+      console.log("Incoming data was not an object");
+      reject("Incoming data was not an object");
+      return;
+    }
+
+    // Check if incoming object has the property that's used
+    if (!data.hasOwnProperty('value')) {
+      reject("Incoming object is improperly formatted")
+      return;
+    }
+
+    // Check if the length of the todo is at least 5 characters
+    if (data.value.length <= 5) {
+      reject("Your todo must be longer than four characters");
+      return;
+    }
+
+    // If data passes the test, add todo to the database
+    db.get("todos").push(data).write();
+
+    // Pass on the success message to the calling controller
+    resolve("Data successfully written into DB");
+  });
+};
+
+module.exports = {writeTodo}
+
+```
 
 ## Links to related packages
 [SQLite npm package](https://www.npmjs.com/package/sqlite3)
