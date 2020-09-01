@@ -24,7 +24,6 @@ const getData = () => {
 
         tList.appendChild(el);
       });
-      M.toast({ html: `<i class='far fa-bell' style='color: green'></i> ${payload.msg}` });
     });
 };
 
