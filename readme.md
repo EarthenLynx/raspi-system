@@ -1,54 +1,39 @@
-# Express minimal boilerplate
+# The MVC Architecture in Node.js with Express
 
-Basically a minimal backbone mongodb - express boilerplate with preconfigured CRUD options. Inspired by the template on MDN.
+## In a nutshell
+![](https://media.prod.mdn.mozit.cloud/attachments/2016/12/06/14456/6a97461a03a5329243b994347c47f12b/MVC%20Express.png)
 
-```sh
-$ git clone https://github.com/EarthenLynx/express-minimal.git
-```
+> ## __You can read details on each component in the corresponding folder's markdown file.__
 
-```sh
-$ npm install
-```
+## Description
 
-```sh
-$ npm run dev
-```
+MVC - models are commonly used to build user interfaces. They are, however, if combined with web frameworks such as express, very useful to build fullstack applications as well. 
 
-## Routes
+MVC divides an application into three separate parts that can call upon one another:
 
-### Root: 
+### Models
+> - Models describe data
+> - Models offer methods to CRUD databases
+> - Models usually contain validators to check for data integrity
 
-> localhost/todo
+### Views
+> - Views visually represent the model's data
+> - Views accept input from a user and invoke functions
+> - Views can be directly coupled to- or decoupled from an application
 
-### get & post
+### Controls
+> - Controllers execute actions
+> - Controllers pick up requests from views and send responses back to it
+> - Controllers call upon model's functionality
 
-> /
+In Express, there are two more components that come in, which are not covered, but required, by the MVC model
 
-### update
+### Routes
+> - Routes pick up requests from the client
+> - Routes compose the application's controllers
+> - Routes pass on requests, sometimes based on a url parameter
 
-> /update
-
-### delete
-
-> /delete
-
-### Structure of the server: 
-```
-root
-|- config
-|- controller
-|  |- todo
-|  |  |- deleteTodo
-|  |  |- getTodo
-|  |  |- saveTodo
-|  |  |- updateTodo
-|  |- upload
-|- middleware
-|  |- logger
-|- models
-|  |- todo
-|- routes
-|  |- api
-|  |  |- todo
-|- app.js
-```
+### Database
+> - Databases are the application's data-soruce
+> - Databases define the data's structure. 
+> - Depending on the db, this is done in combination with the model
