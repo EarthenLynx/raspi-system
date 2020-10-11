@@ -2,6 +2,7 @@
 
 ## In a nutshell
 ![](https://media.prod.mdn.mozit.cloud/attachments/2016/12/06/14456/6a97461a03a5329243b994347c47f12b/MVC%20Express.png)
+* Picture source: [Mozilla Developer Network](https://developer.mozilla.org/en-US/)
 
 > ## __You can read details on each component in the corresponding folder's markdown file.__
 
@@ -11,17 +12,17 @@ MVC - models are commonly used to build user interfaces. They are, however, if c
 
 MVC divides an application into three separate parts that can call upon one another:
 
-### Models
+### [Models](https://github.com/EarthenLynx/express-mvc/blob/master/models/models.md)
 > - Models describe data
 > - Models offer methods to CRUD databases
 > - Models usually contain validators to check for data integrity
 
-### Views
+### [Views](https://github.com/EarthenLynx/express-mvc/blob/master/views/views.md)
 > - Views visually represent the model's data
 > - Views accept input from a user and invoke functions
 > - Views can be directly coupled to- or decoupled from an application
 
-### Controls
+### Controls(https://github.com/EarthenLynx/express-mvc/blob/master/controller/controllers.md)
 > - Controllers execute actions
 > - Controllers pick up requests from views and send responses back to it
 > - Controllers call upon model's functionality
